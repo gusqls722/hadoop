@@ -27,7 +27,8 @@ public class WordCount {
 			public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 				String line = value.toString();
 				StringTokenizer st = new StringTokenizer(line, "\t\r\n\f|,.()<>");         // 탭 엔터 , . () <> 가 있으면 잘라버린다.
-				while(st.hasMoreTokens()) {
+				while(st.hasMoreTokens()) {		// st안에 값이 있으면true  없으면false
+					word.set(st.nextToken().toLowerCase());	
 					context.write(word,lw);
 				}
 			}
@@ -49,7 +50,7 @@ public class WordCount {
 	
 	public static void  main(String[] args) throws Exception{
 		Configuration conf = new Configuration();
-		Job job = Job.getInstance(conf);
+		Job job = Job.getInstance(conf,"WordCount");
 		job.setJarByClass(WordCount.class);
 		job.setMapperClass(WCMapper.class);
 		job.setReducerClass(WCReducer.class);
