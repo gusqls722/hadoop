@@ -20,7 +20,7 @@ public class WordCount {
 
 	//mapper랑 withs
 	public static class WCMapper extends Mapper<LongWritable, Text, Text, LongWritable>{
-			private final static LongWritable lw = new LongWritable();
+			private final static LongWritable lw = new LongWritable(1);
 			private Text word = new Text();
 			
 			@Override       // 오버라이드가 제대로 안되면 아래에서 잘못한 것
