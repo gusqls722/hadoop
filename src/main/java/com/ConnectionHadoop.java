@@ -19,7 +19,7 @@ public class ConnectionHadoop {
 			@Override
 			public Void run() throws Exception {
 				Configuration config = new Configuration();
-				config.set("fs.defaultFS", "hdfs://192.168.0.162:9000/user/bdi");		// 앞에껀 키값 
+				config.set("fs.defaultFS", "hdfs://192.168.0.159:9000/user/bdi");		// 앞에껀 키값 
 				config.setBoolean("dfs.support.append", true);		
 
 				FileSystem fs = FileSystem.get(config);		// 파일시스템에 겟해서 해당 콘피그 22번쨋 줄에 연결한거임.
